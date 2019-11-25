@@ -12,8 +12,37 @@ begin=$(date)
 #Display date and time of installation
 printf "Beginning installation at: $begin\n\n"
 
+printf "Installing git...\n"
+
+#update apt-get
+sudo apt-get update
+
+#install git
+sudo apt-get install git
+
+printf "Installing NodeJS...\n"
+
+#fetching Node files
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+#install nodejs
+sudo apt install nodejs
+
 #Storing date and time at the end of installation
 end=$(date)
 
 #Display date and time of installation end
 printf "Installation finished at: $end\n\n"
+
+printf "Successfully installed following versions:\n"
+
+
+#print out versions for all installed applications
+git --version
+
+#version commands for Node and npm aren't descriptive enough
+printf "Node "
+node --version
+
+printf "npm "
+npm --version
