@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#pipe output to log while also printing it to terminal
+exec > >(tee log.txt)
+
 #Greet the user.
 printf "Hello, $USER! \n\n"
 
@@ -20,13 +23,11 @@ sudo apt-get update
 #install git
 sudo apt-get install git
 
-printf "Installing NodeJS...\n"
-
 #fetching Node files
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 
 #install nodejs
-sudo apt install nodejs
+sudo apt install -y nodejs
 
 #Storing date and time at the end of installation
 end=$(date)
