@@ -29,6 +29,15 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 #install nodejs
 sudo apt install -y nodejs
 
+#download AWS CLI version 1
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+
+#unzip the bundle
+unzip awscli-bundle.zip
+
+#run the AWS CLI installer
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
 #Storing date and time at the end of installation
 end=$(date)
 
@@ -47,3 +56,5 @@ node --version
 
 printf "npm "
 npm --version
+
+aws --version
