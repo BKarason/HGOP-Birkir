@@ -1,5 +1,6 @@
 FROM node:erbium
 
+#Set the working directory to /code
 WORKDIR /code
 
 COPY package.json package.json
