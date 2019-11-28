@@ -25,7 +25,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #exit 1 if there is no docker-compose.yml file present.
 if [[ ! -f docker-compose.yml ]] ; then
-    echo 'File "docker-compose.yml" is not missing, aborting.'
+    echo 'File "docker-compose.yml" is missing, aborting.'
     exit 1
 fi
 
