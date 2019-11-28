@@ -65,3 +65,4 @@ typings/
 
 #terraform generated files
 *.tfstate
+*.tfstate.backup
