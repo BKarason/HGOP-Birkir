@@ -13,14 +13,35 @@ module.exports = (deck, dealer) => {
         card: undefined,
     };
     return {
+        /*
+            Rules
+            The player start the game with 2 cards, each card has an associate point value:
+
+            The Jack, Queen and King are worth 10 points
+            An Ace is worth 1 or 11 points depending on which is most beneficial to the player
+
+            The player can choose between two actions "21 or under" or "over 21":
+
+            "21 or under" -> The player draws a new card if his total point value:
+
+            Is under 21, the game continues
+            Is 21, the player wins the game
+            Is over 21, the player loses the game
+
+            "over 21" -> The player draws the final card if his total point value:
+
+            Is under 21, the player loses the game
+            Is 21, the player loses the game
+            Is over 21, the player wins the game
+        */
         state: state,
         // Is the game over (true or false).
         isGameOver: (game) => {
-            // TODO
+            // TODO Skilar alltaf false nema player tapar (eða player vinnur?)
         },
         // Has the player won (true or false).
         playerWon: (game) => {
-            // TODO
+            // TODO skilar alltaf false nema player vinnur
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
