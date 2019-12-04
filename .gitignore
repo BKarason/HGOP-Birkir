@@ -67,3 +67,5 @@ typings/
 *.tfstate
 *.tfstate.backup
 
+#npm install auto generated file
+package-lock.json
