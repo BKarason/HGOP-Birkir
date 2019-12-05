@@ -31,7 +31,8 @@ test('isGameOver should return "false" on a new game', () => {
   expect(check).toEqual(false);
 });
 
-test('isGameOver should return "false" if the cards value under 21 after the "21 or under" action', () => {
+test('isGameOver should return "false" if the cards value under 21'+
+  ' after the "21 or under" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -53,7 +54,8 @@ test('isGameOver should return "false" if the cards value under 21 after the "21
   expect(check).toEqual(false);
 });
 
-test('isGameOver should return "true" if the cards value over 21 after the "21 or under" action', () => {
+test('isGameOver should return "true" if the cards value over 21'+
+  ' after the "21 or under" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -76,7 +78,8 @@ test('isGameOver should return "true" if the cards value over 21 after the "21 o
   expect(check).toEqual(true);
 });
 
-test('isGameOver should return "true" if the cards value under 21 after the "over 21" action', () => {
+test('isGameOver should return "true" if the cards value under 21'+
+  ' after the "over 21" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -98,7 +101,8 @@ test('isGameOver should return "true" if the cards value under 21 after the "ove
   expect(check).toEqual(true);
 });
 
-test('isGameOver should return "true" if the cards value exactly 21 after the "over 21" action', () => {
+test('isGameOver should return "true" if the cards value exactly 21'+
+  ' after the "over 21" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -131,7 +135,8 @@ test('playerWon should return "false" on a new game', () => {
   expect(check).toEqual(false);
 });
 
-test('playerWon should return "true" if the cards value exactly 21 after the "21 or under" action', () => {
+test('playerWon should return "true" if the cards value exactly 21'+
+  ' after the "21 or under" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -153,7 +158,8 @@ test('playerWon should return "true" if the cards value exactly 21 after the "21
   expect(check).toEqual(true);
 });
 
-test('playerWon should return "false" if the cards value under 21 after the "21 or under" action', () => {
+test('playerWon should return "false" if the cards value under 21'+
+  ' after the "21 or under" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -175,7 +181,8 @@ test('playerWon should return "false" if the cards value under 21 after the "21 
   expect(check).toEqual(false);
 });
 
-test('playerWon should return "true" if the cards value over 21 after the "over 21" action', () => {
+test('playerWon should return "true" if the cards value over 21'+
+  ' after the "over 21" action', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -198,7 +205,8 @@ test('playerWon should return "true" if the cards value over 21 after the "over 
   expect(check).toEqual(true);
 });
 
-test('getCardsValue should return the value of the first two cards on a new game', () => {
+test('getCardsValue should return the value '+
+  'of the first two cards on a new game', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -255,7 +263,8 @@ test('getCardValue after guessOver21 should return a value', () => {
   expect(check).toEqual(5);
 });
 
-test('getTotal should return only the value of the first two cards on a new game', () => {
+test('getTotal should return only the value'+
+  ' of the first two cards on a new game', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -299,7 +308,8 @@ test('getTotal after guessOver21 should return value of all cards', () => {
   expect(check).toEqual(25);
 });
 
-test('getCards should return an array with the first two cards on a new game', () => {
+test('getCards should return an array'+
+  ' with the first two cards on a new game', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [

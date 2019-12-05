@@ -13,39 +13,38 @@ module.exports = (deck, dealer) => {
     card: undefined,
   };
   return {
-    /*
-			NEED TO CHECK FOR ACES!!!!
-
-            The Jack, Queen and King are worth 10 points
-            An Ace is worth 1 or 11 points depending on which is most beneficial to the player
-
-        */
+  /**
+    * NEED TO CHECK FOR ACES!!!!
+    * The Jack, Queen and King are worth 10 points
+    * An Ace is worth 1 or 11 points depending on
+    * which is most beneficial to the player
+    */
     state: state,
     // Is the game over (true or false).
     isGameOver: (game) => {
       // let sum = getTotal(game);
       let sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-            	sum += +game.state.cards[i].substr(0, 2);
+        sum += +game.state.cards[i].substr(0, 2);
       }
       if (game.state.card != undefined) {
-            	sum += +game.state.card.substr(0, 2);
+        sum += +game.state.card.substr(0, 2);
       }
 
       if (sum < 21 && game.state.card == undefined) {
-            	return false;
+        return false;
       }
 
       if (sum > 21 && game.state.card == undefined) {
-            	return true;
+        return true;
       }
 
       if (sum < 21 && game.state.card != undefined) {
-            	return true;
+        return true;
       }
 
       if (sum == 21 && game.state.card != undefined) {
-            	return true;
+        return true;
       }
       return false;
     },
@@ -53,37 +52,38 @@ module.exports = (deck, dealer) => {
     playerWon: (game) => {
       let sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-            	sum += +game.state.cards[i].substr(0, 2);
+        sum += +game.state.cards[i].substr(0, 2);
       }
       if (game.state.card != undefined) {
-            	sum += +game.state.card.substr(0, 2);
+        sum += +game.state.card.substr(0, 2);
       }
 
       if (sum == 21 && game.state.card == undefined) {
-            	return true;
+        return true;
       }
       if (sum > 21 && game.state.card != undefined) {
-            	return true;
+        return true;
       }
       if (sum < 21 && game.state.card == undefined) {
-            	return false;
+        return false;
       }
       return false;
     },
     // The highest score the cards can yield without going over 21 (integer).
     getCardsValue: (game) => {
       // TODO
-      let sum = 0;
+      const sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-            	sum += +game.state.cards[i].substr(0, 2);
+        um += +game.state.cards[i].substr(0, 2);
       }
       return sum;
     },
-    // The value of the card that should exceed 21 if it exists (integer or undefined).
+    // The value of the card that should exceed 21 if it exists
+    // (integer or undefined).
     getCardValue: (game) => {
       // TODO
       if (game.state.card != undefined) {
-            	return +game.state.card.substr(0, 2);
+        return +game.state.card.substr(0, 2);
       }
       return game.state.card;
     },
@@ -91,10 +91,10 @@ module.exports = (deck, dealer) => {
       // TODO
       let sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-            	sum += +game.state.cards[i].substr(0, 2);
+        sum += +game.state.cards[i].substr(0, 2);
       }
       if (game.state.card != undefined) {
-            	sum += +game.state.card.substr(0, 2);
+        sum += +game.state.card.substr(0, 2);
       }
       return sum;
     },

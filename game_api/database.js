@@ -20,7 +20,8 @@ module.exports = {
     const client = getClient();
     client.connect(() => {
       const query = {
-        text: 'SELECT ID, Name, InsertDate FROM Item ORDER BY InsertDate DESC LIMIT 10;',
+        text: 'SELECT ID, Name, InsertDate FROM Item' +
+        'ORDER BY InsertDate DESC LIMIT 10;',
         rowMode: 'array',
       };
       client.query(query, (err, res) => {
@@ -38,6 +39,9 @@ module.exports = {
   },
 };
 
+/**
+  * @return {Client} database client credentials
+  */
 function getClient() {
   return new Client({
     host: 'my_postgres_container',
@@ -55,7 +59,9 @@ setTimeout(() => {
       console.log('failed to connect to postgres!');
     } else {
       console.log('successfully connected to postgres!');
-      client.query('CREATE TABLE IF NOT EXISTS Item (ID SERIAL PRIMARY KEY, Name VARCHAR(32) NOT NULL, InsertDate TIMESTAMP NOT NULL);', (err) => {
+      client.query('CREATE TABLE IF NOT EXISTS Item'+
+        '(ID SERIAL PRIMARY KEY, Name VARCHAR(32) NOT NULL,'+
+        ' InsertDate TIMESTAMP NOT NULL);', (err) => {
         if (err) {
           console.log('error creating Item table!');
         } else {
