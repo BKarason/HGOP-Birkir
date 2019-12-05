@@ -4,7 +4,8 @@ echo 'This script installs everything needed to run our API on the instance'
 echo 'and then starts the API.'
 
 echo 'Installing Docker'
-sudo apt-get install -y \
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -15,8 +16,8 @@ sudo add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) \
     stable"
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ubuntu
 
 echo 'Install Docker Compose'
@@ -28,6 +29,3 @@ if [[ ! -f docker-compose.yml ]] ; then
     echo 'File "docker-compose.yml" is missing, aborting.'
     exit 1
 fi
-
-echo 'Starting the API'
-sudo docker-compose up -d

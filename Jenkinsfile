@@ -15,8 +15,16 @@ node {
 		    sh "npm run eslint"
 		}
     }
+    stage("Test") {
+    	dir("${env.WORKSPACE}/game_api"){
+		    sh "npm run test:unit"
+		}
+    }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
+    }
+    stage("Deploy") {
+    	sh "./scripts/jenkins_deploy.sh"
     }
 }
