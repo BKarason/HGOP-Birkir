@@ -6,13 +6,12 @@ node {
 		sh "git stash"
     }
     stage("Setup") {
-    	sh "cd game_api"
-    	sh "ls - l"
+    	sh "cd game_api/"
     	sh "npm install"
-    	sh "cd .."
     }
     stage("Lint") {
     	sh "npm run eslint"
+    	sh "cd .."
     }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
