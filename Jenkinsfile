@@ -6,7 +6,8 @@ node {
 		sh "git stash"
     }
     stage("Setup") {
-    	sh "cd game_api/"
+    	sh "cd game_api"
+    	sh "echo $PWD"
     	sh "npm install"
     	sh "cd .."
     }
