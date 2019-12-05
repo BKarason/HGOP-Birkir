@@ -22,8 +22,15 @@ test('a new game should have 2 drawn cards', () => {
 
 test('isGameOver should return "false" on a new game', () => {
   // Arrange
-  const deck = deckConstructor();
+  let deck = deckConstructor();
+  deck = [
+    '05C', '01D', '09S', '10H',
+  ];
   const dealer = dealerConstructor();
+
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
   const game = lucky21Constructor(deck, dealer);
   // Act
   const check = game.isGameOver(game);
