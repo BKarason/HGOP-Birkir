@@ -7,7 +7,7 @@ node {
     }
     stage("Setup") {
     	sh "cd game_api"
-    	sh "echo $PWD"
+    	sh "ls - l"
     	sh "npm install"
     	sh "cd .."
     }
