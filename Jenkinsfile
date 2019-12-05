@@ -6,10 +6,10 @@ node {
 		sh "git stash"
     }
     stage("Setup") {
-    	sh "npm install"
+    	npm install
     }
     stage("Lint") {
-    	sh "npm run eslint"
+    	npm run eslint
     }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
