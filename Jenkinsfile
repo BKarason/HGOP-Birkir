@@ -25,6 +25,6 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("Deploy") {
-    	sh "./scripts/jenkins_deploy.sh"
+    	sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
     }
 }
