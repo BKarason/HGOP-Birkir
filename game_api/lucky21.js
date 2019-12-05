@@ -74,7 +74,7 @@ module.exports = (deck, dealer) => {
       // TODO
       const sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-        um += +game.state.cards[i].substr(0, 2);
+        sum += +game.state.cards[i].substr(0, 2);
       }
       return sum;
     },
