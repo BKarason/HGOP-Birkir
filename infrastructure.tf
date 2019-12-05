@@ -52,7 +52,7 @@ resource "aws_instance" "game_server" {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.aws/GameKeyPair.pem")
+      private_key = file("/var/lib/jenkins/.aws/GameKeyPair.pem")
     }
   }
 
@@ -66,7 +66,7 @@ resource "aws_instance" "game_server" {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.aws/GameKeyPair.pem")
+      private_key = file("/var/lib/jenkins/.aws/GameKeyPair.pem")
     }
   }
 
@@ -86,7 +86,7 @@ resource "aws_instance" "game_server" {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.aws/GameKeyPair.pem")
+      private_key = file("/var/lib/jenkins/.aws/GameKeyPair.pem")
     }
   }
 }
