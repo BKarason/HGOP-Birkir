@@ -6,10 +6,14 @@ node {
 		sh "git stash"
     }
     stage("Setup") {
-    	npm install
+    	dir("${env.WORKSPACE}/game_api"){
+		    sh "npm install"
+		}
     }
     stage("Lint") {
-    	npm run eslint
+    	dir("${env.WORKSPACE}/game_api"){
+		    sh "npm run eslint"
+		}
     }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
