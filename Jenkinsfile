@@ -10,6 +10,9 @@ node {
     	sh "npm install"
     	sh "cd .."
     }
+    stage("Lint") {
+    	sh "npm run eslint"
+    }
     stage("Build") {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
