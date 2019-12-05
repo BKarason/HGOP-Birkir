@@ -1,11 +1,11 @@
-#!/bin/bash
+l#!/bin/bash
 
 # exit on error if any command fails
 set -e
 
 GIT_COMMIT=$1
 
-docker build -t bkarason/hgop:$GIT_COMMIT item_repository/
+docker build -t bkarason/hgop:$GIT_COMMIT game_api/
 
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
