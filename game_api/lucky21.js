@@ -72,7 +72,7 @@ module.exports = (deck, dealer) => {
     // The highest score the cards can yield without going over 21 (integer).
     getCardsValue: (game) => {
       // TODO
-      const sum = 0;
+      let sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
         sum += +game.state.cards[i].substr(0, 2);
       }
