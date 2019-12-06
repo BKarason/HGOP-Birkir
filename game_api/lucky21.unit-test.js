@@ -30,7 +30,7 @@ test('isGameOver should return "false" on a new game', () => {
 
   // Override the shuffle to do nothing.
   dealer.shuffle = (deck) => {};
-  
+
   const game = lucky21Constructor(deck, dealer);
   // Act
   const check = game.isGameOver(game);
@@ -133,8 +133,15 @@ test('isGameOver should return "true" if the cards value exactly 21'+
 
 test('playerWon should return "false" on a new game', () => {
   // Arrange
-  const deck = deckConstructor();
+  let deck = deckConstructor();
+  deck = [
+    '05C', '01D', '09S', '10H',
+  ];
   const dealer = dealerConstructor();
+
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
   const game = lucky21Constructor(deck, dealer);
   // Act
   const check = game.playerWon(game);
