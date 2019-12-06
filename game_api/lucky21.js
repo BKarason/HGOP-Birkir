@@ -98,7 +98,7 @@ module.exports = (deck, dealer) => {
           }
         }
         else {
-          if((game.getGardsValue() + 11) > 21) {
+          if((game.getCardsValue(game) + 11) > 21) {
             return 1;
           }
           else {
