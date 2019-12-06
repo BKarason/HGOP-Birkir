@@ -22,14 +22,7 @@ module.exports = (deck, dealer) => {
     state: state,
     // Is the game over (true or false).
     isGameOver: (game) => {
-      // let sum = getTotal(game);
-      let sum = 0;
-      for (let i = 0; i < game.state.cards.length; i++) {
-        sum += +game.state.cards[i].substr(0, 2);
-      }
-      if (game.state.card != undefined) {
-        sum += +game.state.card.substr(0, 2);
-      }
+      let sum = game.getTotal(game);
 
       if (sum < 21 && game.state.card == undefined) {
         return false;
@@ -50,13 +43,7 @@ module.exports = (deck, dealer) => {
     },
     // Has the player won (true or false).
     playerWon: (game) => {
-      let sum = 0;
-      for (let i = 0; i < game.state.cards.length; i++) {
-        sum += +game.state.cards[i].substr(0, 2);
-      }
-      if (game.state.card != undefined) {
-        sum += +game.state.card.substr(0, 2);
-      }
+      let sum = game.getTotal(game);
 
       if (sum == 21 && game.state.card == undefined) {
         return true;
@@ -74,7 +61,24 @@ module.exports = (deck, dealer) => {
       // TODO
       let sum = 0;
       for (let i = 0; i < game.state.cards.length; i++) {
-        sum += +game.state.cards[i].substr(0, 2);
+        let val = +game.state.cards[i].substr(0, 2);
+        
+        if(val != 1) {
+          if(val > 10) {
+            sum += 10;
+          }
+          else {
+            sum += val;
+          }
+        }
+        else {
+          if((game.getGardsValue(game) + 11) > 21) {
+            sum += 1;
+          }
+          else {
+            sum += 11;
+          }
+        }
       }
       return sum;
     },
@@ -83,20 +87,35 @@ module.exports = (deck, dealer) => {
     getCardValue: (game) => {
       // TODO
       if (game.state.card != undefined) {
-        return +game.state.card.substr(0, 2);
+        let val = +game.state.card.substr(0, 2);
+
+        if(val != 1) {
+          if(val > 10) {
+            return 10;
+          }
+          else {
+            return val;
+          }
+        }
+        else {
+          if((game.getGardsValue(game) + 11) > 21) {
+            return 1;
+          }
+          else {
+            return 11;
+          }
+        }
       }
       return game.state.card;
     },
     getTotal: (game) => {
       // TODO
-      let sum = 0;
-      for (let i = 0; i < game.state.cards.length; i++) {
-        sum += +game.state.cards[i].substr(0, 2);
+      let cardsSum = game.getCardsValue(game);
+      let card = game.getCardValue(game);
+      if(card != undefined) {
+        return cardsSum + card;
       }
-      if (game.state.card != undefined) {
-        sum += +game.state.card.substr(0, 2);
-      }
-      return sum;
+      return cardsSum;
     },
     // The player's cards (array of strings).
     getCards: (game) => {
