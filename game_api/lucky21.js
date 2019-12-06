@@ -72,7 +72,7 @@ module.exports = (deck, dealer) => {
           }
         }
         else {
-          if((game.getGardsValue(game) + 11) > 21) {
+          if((sum + 11) > 21) {
             sum += 1;
           }
           else {
