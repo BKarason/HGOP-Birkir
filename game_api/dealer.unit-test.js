@@ -3,20 +3,20 @@ function newRandom(randomReturnValues) {
     return {
         randomInt: (min, max) => {
             return randomReturnValues[i++];
-        }
+        },
     };
 }
 
 test('dealer should shuffle cards', () => {
     // Arrange
-    let dependencies = {
+    const dependencies = {
         'random': () => newRandom([2, 1]),
     };
-    let newDealer = require('./dealer.js');
-    let dealer = newDealer((name) => {
+    const newDealer = require('./dealer.js');
+    const dealer = newDealer((name) => {
         return dependencies[name];
     });
-    let deck = ['a', 'b', 'c'];
+    const deck = ['a', 'b', 'c'];
 
     // Act
     dealer.shuffle(deck);
@@ -27,14 +27,14 @@ test('dealer should shuffle cards', () => {
 
 test('overridden shuffle should not shuffle cards', () => {
     // Arrange
-    let dependencies = {
+    const dependencies = {
         'random': () => newRandom([2, 1]),
     };
-    let newDealer = require('./dealer.js');
-    let dealer = newDealer((name) => {
+    const newDealer = require('./dealer.js');
+    const dealer = newDealer((name) => {
         return dependencies[name];
     });
-    let deck = ['a', 'b', 'c'];
+    const deck = ['a', 'b', 'c'];
 
     // Override the shuffle to do nothing.
     dealer.shuffle = (deck) => {};
@@ -48,19 +48,19 @@ test('overridden shuffle should not shuffle cards', () => {
 
 test('draw should return the expected card', () => {
     // Arrange
-    let dependencies = {
+    const dependencies = {
         'random': () => newRandom([2, 1]),
     };
-    let newDealer = require('./dealer.js');
-    let dealer = newDealer((name) => {
+    const newDealer = require('./dealer.js');
+    const dealer = newDealer((name) => {
         return dependencies[name];
     });
-    let deck = ['a', 'b', 'c'];
+    const deck = ['a', 'b', 'c'];
 
     dealer.shuffle(deck);
 
     // Act
-    let card = dealer.draw(deck);
+    const card = dealer.draw(deck);
 
     // Assert
     expect(card).toEqual('a');
@@ -68,17 +68,17 @@ test('draw should return the expected card', () => {
 
 test('draw should return no card after deck is finished', () => {
     // Arrange
-    let dependencies = {
+    const dependencies = {
         'random': () => newRandom([2, 1]),
     };
-    let newDealer = require('./dealer.js');
-    let dealer = newDealer((name) => {
+    const newDealer = require('./dealer.js');
+    const dealer = newDealer((name) => {
         return dependencies[name];
     });
-    let deck = [];
+    const deck = [];
 
     // Act
-    let card = dealer.draw(deck);
+    const card = dealer.draw(deck);
 
     // Assert
     expect(card).toEqual(undefined);

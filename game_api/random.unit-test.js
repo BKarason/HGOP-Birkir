@@ -1,5 +1,5 @@
 test('if random is called without parameters'+
-	'it should not return a number', () => {
+'it should not return a number', () => {
     // Arrange
     const random = require('./random')();
 
@@ -11,7 +11,7 @@ test('if random is called without parameters'+
 });
 
 test('random should return a number that is greater'+
-	'or equal to the min value passed into it', () => {
+'or equal to the min value passed into it', () => {
     // Arrange
     const random = require('./random')();
 
@@ -23,7 +23,7 @@ test('random should return a number that is greater'+
 });
 
 test('random should return a number that is less'+
-	'or equal to the max value passed into it', () => {
+'or equal to the max value passed into it', () => {
     // Arrange
     const random = require('./random')();
 

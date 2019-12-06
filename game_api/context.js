@@ -1,7 +1,7 @@
-const express = require("express");
-const database = require("./database.js");
-const lucky21 = require("./lucky21.js");
-const { Client } = require('pg');
+const express = require('express');
+const database = require('./database.js');
+const lucky21 = require('./lucky21.js');
+const {Client} = require('pg');
 const deck = require('./deck.js');
 const dealer = require('./dealer.js');
 const server = require('./server.js');
@@ -20,7 +20,7 @@ module.exports = {
             'dealer': dealer,
             'server': server,
             'random': random,
-            'config': config
+            'config': config,
         });
     },
 };
