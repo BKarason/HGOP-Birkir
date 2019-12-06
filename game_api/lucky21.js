@@ -13,12 +13,6 @@ module.exports = (deck, dealer) => {
     card: undefined,
   };
   return {
-  /**
-    * NEED TO CHECK FOR ACES!!!!
-    * The Jack, Queen and King are worth 10 points
-    * An Ace is worth 1 or 11 points depending on
-    * which is most beneficial to the player
-    */
     state: state,
     // Is the game over (true or false).
     isGameOver: (game) => {
