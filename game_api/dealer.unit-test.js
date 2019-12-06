@@ -1,19 +1,26 @@
-const dealerConstructor = require('./dealer.js');
+function newRandom(randomReturnValues) {
+    let i = 0;
+    return {
+        randomInt: (min, max) => {
+            return randomReturnValues[i++];
+        }
+    };
+}
 
-test('dealer should shuffle cards', () => {
+test('dealer should should shuffle cards', () => {
     // Arrange
+    let dependencies = {
+        'random': () => newRandom([2, 1]),
+    };
+    let newDealer = require('./dealer.js');
+    let dealer = newDealer((name) => {
+        return dependencies[name];
+    });
     let deck = ['a', 'b', 'c'];
-    let dealer = dealerConstructor();
 
     // Act
-    // Expected Shuffle
-    // ['a', 'b', 'c'] Initial
-    // ['c', 'b', 'a'] Switch index 0 and 2
-    // ['c', 'a', 'b'] Switch index 1 and 2
-    dealer.shuffle(deck, () => {
-        return 0.99;
-    });
-    
+    dealer.shuffle(deck);
+
     // Assert
-    expect(deck).toEqual(['c', 'a', 'b']);
+    expect(deck).toEqual(['c', 'b', 'a']);
 });

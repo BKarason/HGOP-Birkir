@@ -8,13 +8,10 @@ WORKDIR /code
 COPY package.json package.json
 
 #Excecute install command of the package manager
-RUN npm install
+RUN npm install --production
 
-#Copying the database file from local directory into /code
-COPY database.js database.js
-
-#Copying the app file from local directory into /code
-COPY app.js app.js
+#Copying all .js files from local directory into /code
+COPY *.js ./
 
 #Launch the process
 CMD node app.js
