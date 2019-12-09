@@ -64,13 +64,13 @@ module.exports = function(context) {
                     client.end();
                 } else {
                     const query = {
-                        text: 'SELECT COUNT(*) FROM GameResult;'
+                        text: 'SELECT * FROM GameResult;'
                     };
                     client.query(query, (err, res) => {
                         if (err) {
                             onError(err);
                         } else {
-                            onSuccess(res.rows[0].count);
+                            onSuccess(res.rowCount);
                         }
                         client.end();
                     });

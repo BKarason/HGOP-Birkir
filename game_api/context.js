@@ -13,6 +13,7 @@ module.exports = {
     newContext: () => {
         return inject({
             'express': express,
+            'config': config,
             'pgClient': Client,
             'database': database,
             'lucky21': lucky21,
@@ -20,7 +21,6 @@ module.exports = {
             'dealer': dealer,
             'server': server,
             'random': random,
-            'config': config,
         });
     },
 };
