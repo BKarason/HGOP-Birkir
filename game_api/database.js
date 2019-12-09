@@ -11,7 +11,7 @@ module.exports = function(context) {
             database: config.pgDatabase,
         });
     }
-    // triggering build pipeline
+    
     setTimeout(() => {
         const client = getClient();
         client.connect((err) => {
