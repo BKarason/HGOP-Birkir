@@ -11,7 +11,7 @@ module.exports = function(context) {
             database: config.pgDatabase,
         });
     }
-    
+
     setTimeout(() => {
         const client = getClient();
         client.connect((err) => {
@@ -64,13 +64,13 @@ module.exports = function(context) {
                     client.end();
                 } else {
                     const query = {
-                        text: 'SELECT * FROM GameResult;'
+                        text: 'SELECT COUNT(*) FROM GameResult;'
                     };
                     client.query(query, (err, res) => {
                         if (err) {
                             onError(err);
                         } else {
-                            onSuccess(res.rowCount);
+                            onSuccess(res.rows[0].count);
                         }
                         client.end();
                     });
@@ -80,7 +80,7 @@ module.exports = function(context) {
         },
         // Should call onSuccess with integer.
         getTotalNumberOfWins: (onSuccess, onError) => {
-            const client = getClient();
+            /*const client = getClient();
             client.connect((err) => {
                 if (err) {
                     onError(err);
@@ -99,11 +99,12 @@ module.exports = function(context) {
                     });
                 }
             });
-            return;
+            return;*/
+            onSuccess(0);
         },
         // Should call onSuccess with integer.
         getTotalNumberOf21: (onSuccess, onError) => {
-            const client = getClient();
+            /*const client = getClient();
             client.connect((err) => {
                 if (err) {
                     onError(err);
@@ -122,7 +123,8 @@ module.exports = function(context) {
                     });
                 }
             });
-            return;
+            return;*/
+            onSuccess(0);
         },
     };
 };
