@@ -22,39 +22,12 @@ module.exports = (context) => {
         state: state,
         // Is the game over (true or false).
         isGameOver: (game) => {
-            const sum = game.getTotal(game);
-
-            if (sum < 21 && game.state.card == undefined) {
-                return false;
-            }
-
-            if (sum > 21 && game.state.card == undefined) {
-                return true;
-            }
-
-            if (sum < 21 && game.state.card != undefined) {
-                return true;
-            }
-
-            if (sum == 21 && game.state.card != undefined) {
-                return true;
-            }
-            return false;
+            return game.state.card !== undefined ||
+              game.getTotal(game) >= 21;
         },
-        // Has the player won (true or false).
         playerWon: (game) => {
-            const sum = game.getTotal(game);
-
-            if (sum == 21 && game.state.card == undefined) {
-                return true;
-            }
-            if (sum > 21 && game.state.card != undefined) {
-                return true;
-            }
-            if (sum < 21 && game.state.card == undefined) {
-                return false;
-            }
-            return false;
+            return (game.state.card !== undefined && game.getTotal(game) > 21) ||
+              game.getCardsValue(game) == 21;
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
