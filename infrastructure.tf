@@ -1,3 +1,7 @@
+variable "environment" {
+  type = string
+}
+
 # Use AWS as the provider and location of credentials
 provider "aws" {
   shared_credentials_file = "~/.aws/credentials"
@@ -7,7 +11,7 @@ provider "aws" {
 # Create security group named game_security_group and open
 # ports for incoming and outgoing traffic
 resource "aws_security_group" "game_security_group" {
-  name = "GameSecurityGroup"
+  name = "GameSecurityGroup_${var.environment}"
 
   ingress {
     from_port   = 22
@@ -39,7 +43,7 @@ resource "aws_instance" "game_server" {
   key_name               = "GameKeyPair"
   vpc_security_group_ids = [aws_security_group.game_security_group.id]
   tags = {
-    Name = "GameServer"
+    Name = "GameServer_${var.environment}"
   }
 
   # Copy initialize_game_api_instance script from local machine

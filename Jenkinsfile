@@ -2,8 +2,8 @@ node {
     def git = checkout scm
     stage("Clean") {
     	sh "echo 'I solemnly swear that I know not to run this without committing changes I want to keep!'"
-		sh "git clean -dfxq"
-		sh "git stash"
+		  sh "git clean -dfxq"
+		  sh "git stash"
     }
     stage("Setup") {
     	dir("${env.WORKSPACE}/game_api"){
