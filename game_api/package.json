@@ -6,6 +6,7 @@
   "scripts": {
     "test:unit": "jest --testRegex *.unit-test.js --collectCoverage true",
     "test:api": "jest --testRegex *.api-test.js --collectCoverage true",
+    "test:capacity": "jest --testRegex *.capacity-test.js --collectCoverage true",
     "eslint": "eslint *.js --fix"
   },
   "author": "Birkir Kárason",
