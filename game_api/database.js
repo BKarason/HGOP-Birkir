@@ -57,18 +57,72 @@ module.exports = function(context) {
         },
         // Should call onSuccess with integer.
         getTotalNumberOfGames: (onSuccess, onError) => {
-            onSuccess(0);
-            // TODO week 3
+            const client = getClient();
+            client.connect((err) => {
+                if (err) {
+                    onError(err);
+                    client.end();
+                } else {
+                    const query = {
+                        text: 'SELECT * FROM GameResult;'
+                    };
+                    client.query(query, (err, res) => {
+                        if (err) {
+                            onError(err);
+                        } else {
+                            onSuccess(res.rowCount);
+                        }
+                        client.end();
+                    });
+                }
+            });
+            return;
         },
         // Should call onSuccess with integer.
         getTotalNumberOfWins: (onSuccess, onError) => {
-            onSuccess(0);
-            // TODO week 3
+            const client = getClient();
+            client.connect((err) => {
+                if (err) {
+                    onError(err);
+                    client.end();
+                } else {
+                    const query = {
+                        text: 'SELECT * FROM GameResult WHERE Won = true;'
+                    };
+                    client.query(query, (err, res) => {
+                        if (err) {
+                            onError(err);
+                        } else {
+                            onSuccess(res.rowCount);
+                        }
+                        client.end();
+                    });
+                }
+            });
+            return;
         },
         // Should call onSuccess with integer.
         getTotalNumberOf21: (onSuccess, onError) => {
-            onSuccess(0);
-            // TODO week 3
+            const client = getClient();
+            client.connect((err) => {
+                if (err) {
+                    onError(err);
+                    client.end();
+                } else {
+                    const query = {
+                        text: 'SELECT * FROM GameResult WHERE Score = 21;'
+                    };
+                    client.query(query, (err, res) => {
+                        if (err) {
+                            onError(err);
+                        } else {
+                            onSuccess(res.rowCount);
+                        }
+                        client.end();
+                    });
+                }
+            });
+            return;
         },
     };
 };
