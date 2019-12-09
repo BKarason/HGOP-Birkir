@@ -80,7 +80,7 @@ module.exports = function(context) {
         },
         // Should call onSuccess with integer.
         getTotalNumberOfWins: (onSuccess, onError) => {
-            /*const client = getClient();
+            const client = getClient();
             client.connect((err) => {
                 if (err) {
                     onError(err);
@@ -99,12 +99,11 @@ module.exports = function(context) {
                     });
                 }
             });
-            return;*/
-            onSuccess(0);
+            return;
         },
         // Should call onSuccess with integer.
         getTotalNumberOf21: (onSuccess, onError) => {
-            /*const client = getClient();
+            const client = getClient();
             client.connect((err) => {
                 if (err) {
                     onError(err);
@@ -123,8 +122,7 @@ module.exports = function(context) {
                     });
                 }
             });
-            return;*/
-            onSuccess(0);
+            return;
         },
     };
 };
