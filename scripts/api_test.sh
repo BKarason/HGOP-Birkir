@@ -31,7 +31,9 @@ ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform o
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
 
 # Fetching terraform url so tests can be run
-API_URL=$(cd /var/lib/jenkins/terraform/hgop/apitest && terraform output public_ip)
+API_IP=$(cd /var/lib/jenkins/terraform/hgop/apitest && terraform output public_ip)
+
+API_URL=http://${API_IP}:3000
 
 # Run API tests
 cd /var/lib/jenkins/workspace/HGOP-Birkir/game_api/ && npm run test:api
