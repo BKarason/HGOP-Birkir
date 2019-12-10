@@ -34,7 +34,7 @@ ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform o
 API_URL=$(cd /var/lib/jenkins/terraform/hgop/capacitytest && terraform output public_ip)
 
 # Run Capacity tests
-cd /var/lib/jenkins/game_api/ && npm run test:capacity
+cd /var/lib/jenkins/workspace/HGOP-Birkir/game_api/ && npm run test:capacity
 
 # Tear down the capacitytest instance
 terraform destroy -auto-approve -var environment=capacitytest || exit 1

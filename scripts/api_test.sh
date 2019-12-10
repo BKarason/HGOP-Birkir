@@ -34,7 +34,7 @@ ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform o
 API_URL=$(cd /var/lib/jenkins/terraform/hgop/apitest && terraform output public_ip)
 
 # Run API tests
-cd /var/lib/jenkins/game_api/ && npm run test:api
+cd /var/lib/jenkins/workspace/HGOP-Birkir/game_api/ && npm run test:api
 
 # Tear down the apitest instance
 terraform destroy -auto-approve -var environment=apitest || exit 1
