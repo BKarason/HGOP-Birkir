@@ -6,6 +6,7 @@ set -e
 GIT_COMMIT=$1
 
 docker push bkarason/hgop:$GIT_COMMIT
+docker push bkarason/hgop-cli:$GIT_COMMIT
 
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
