@@ -20,19 +20,6 @@ module.exports = function(context) {
         database.getTotalNumberOfGames((totalNumberOfGames) => {
             database.getTotalNumberOfWins((totalNumberOfWins) => {
                 database.getTotalNumberOf21((totalNumberOf21) => {
-                    // Week 3
-                    // TODO Explain why we put each consecutive call inside the onSuccess callback of the
-                    // previous database call, instead of just placing them next to each other.
-                    // E.g.
-                    // database.call1(...);
-                    // database.call2(...);
-                    // database.call3(...);
-                    //
-                    // Answer:
-                    // The reason why is that if these calls were consecutive the total time spent waiting for
-                    // the result would be the addition of the time each call takes, but nesting the calls in the
-                    // onSuccess callbacks of each database calls means that the total waiting time will only be
-                    // how long the slowest call takes, saving alot of time which is essential for API's
                     res.statusCode = 200;
                     res.send({
                         totalNumberOfGames: totalNumberOfGames,
