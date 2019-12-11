@@ -7,11 +7,13 @@
     "test:unit": "jest --testRegex *.unit-test.js --collectCoverage true",
     "test:api": "jest --testRegex *.api-test.js --collectCoverage true",
     "test:capacity": "jest --testRegex *.capacity-test.js --collectCoverage true",
-    "eslint": "eslint *.js --fix"
+    "eslint": "eslint *.js --fix",
+    "migratedb:pg": "db-migrate --verbose --env pg --config ./database.json --migrations-dir ./migrations up"
   },
   "author": "Birkir Kárason",
   "license": "ISC",
   "dependencies": {
+    "db-migrate": "^0.11.6",
     "express": "4.17.1",
     "pg": "7.12.1"
   },
