@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.API_URL; //triggering pipeline
 
 export const startGame = () => {
   return axios.post(`${apiUrl}/start`).then(res => {
