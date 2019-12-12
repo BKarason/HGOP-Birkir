@@ -19,7 +19,7 @@ services:
       POSTGRES_USER: 'my_user'
       POSTGRES_PASSWORD: 'my_password'
   game_client:
-    image: bkarason/hgop-cli:${GIT_COMMIT}
+    image: bkarason/hgopclient:${GIT_COMMIT}
     ports:
     - '4000:4000'
     depends_on:

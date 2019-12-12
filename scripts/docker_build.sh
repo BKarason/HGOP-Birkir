@@ -5,9 +5,9 @@ set -e
 
 GIT_COMMIT=$1
 
-docker build -t bkarason/hgop:$GIT_COMMIT game_api/
+docker build game_api -t bkarason/hgop:$GIT_COMMIT
 (cd game_client && npm run build)
-docker build -t bkarason/hgopcli:$GIT_COMMIT game_client/
+docker build game_client/ -t bkarason/hgopclient:$GIT_COMMIT
 
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
