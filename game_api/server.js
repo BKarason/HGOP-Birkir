@@ -5,6 +5,8 @@ module.exports = function(context) {
     const configConstructor = context('config');
     const config = configConstructor(context);
     const lucky21Constructor = context('lucky21');
+    const StatsD = require('hot-shots');
+    const client = new StatsD({host: 'my_datadog_container', globalTags: { env: process.env.ENVIRONMENT } ,errorHandler: (error) => console.log('Error from StatsD:', error)});
 
     const app = express();
 
@@ -54,12 +56,15 @@ module.exports = function(context) {
             res.statusCode = 409;
             res.send('There is already a game in progress');
         } else {
+            client.increment('games.started');
             game = lucky21Constructor(context);
             const msg = 'Game started';
             if (game.isGameOver(game)) {
                 const won = game.playerWon(game);
                 const score = game.getCardsValue(game);
                 const total = game.getTotal(game);
+                if(won){ client.increment('games.won'); }
+                if(score == 21) { client.increment('games.21'); }
                 database.insertResult(won, score, total, () => {
                     console.log('Game result inserted to database');
                 }, (err) => {
@@ -96,6 +101,9 @@ module.exports = function(context) {
                     const won = game.playerWon(game);
                     const score = game.getCardsValue(game);
                     const total = game.getTotal(game);
+                    if(won){ client.increment('games.won'); }
+                    if(won && score == 21) { client.increment('games.21'); }
+                    if(!won){ client.increment('games.lost'); }
                     database.insertResult(won, score, total, () => {
                         console.log('Game result inserted to database');
                     }, (err) => {
@@ -125,6 +133,8 @@ module.exports = function(context) {
                     const won = game.playerWon(game);
                     const score = game.getCardsValue(game);
                     const total = game.getTotal(game);
+                    if(won){ client.increment('games.won'); }
+                    if(!won){ client.increment('games.lost'); }
                     database.insertResult(won, score, total, () => {
                         console.log('Game result inserted to database');
                     }, (err) => {

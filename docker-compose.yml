@@ -7,6 +7,7 @@ services:
     depends_on:
     - my_database_container
     environment:
+      ENVIRONMENT: ${ENVIRONMENT}
       PORT: 3000
       POSTGRES_HOST: 'my_database_container'
       POSTGRES_DB: 'game_database'
@@ -28,4 +29,16 @@ services:
       PORT: 4000
       API_PORT: 3000
       API_URL: ${API_URL}
+  # Based on https://github.com/DataDog/docker-compose-example
+  my_datadog_container:
+    image: datadog/agent:latest
+    environment:
+      DD_API_KEY: '19953a02735067a178b01ecd0f0accf4'
+      DD_SITE: 'datadoghq.eu'
+      DD_DOGSTATSD_NON_LOCAL_TRAFFIC: 'true'
+      DD_TAGS: ${ENVIRONMENT}
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
 
