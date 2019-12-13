@@ -9,6 +9,9 @@ node {
     	dir("${env.WORKSPACE}/game_api"){
 		    sh "npm install"
 		}
+		dir("${env.WORKSPACE}/game_client"){
+		    sh "npm install"
+		}
     }
     stage("Lint") {
     	dir("${env.WORKSPACE}/game_api"){
